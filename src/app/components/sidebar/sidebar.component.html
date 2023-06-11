@@ -1,0 +1,89 @@
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened class="custom-drawer">
+    <!-- <div>
+      <a mat-button routerLink="/">Projects I Own</a>
+    </div>
+    <div>
+      <a mat-button routerLink="/about">Projects Im On</a>
+    </div>
+    <div>
+      <a mat-button routerLink="/about">All Projects</a>
+    </div> -->
+  </mat-drawer>
+  
+  <mat-drawer-content>
+    <mat-card >
+      <mat-card-header>
+        <mat-card-title>Projects I Own</mat-card-title>
+        
+      </mat-card-header>
+      <mat-card-actions fxLayoutAlign="start center" fxLayoutGap="8px">
+        <button mat-raised-button color="primary"> <mat-icon>add</mat-icon>Add New</button>
+        <button mat-stroked-button><mat-icon>open_in_browser</mat-icon>Export</button>
+        <button mat-raised-button color="primary"><mat-icon>edit</mat-icon>Edit</button>
+        <button mat-raised-button color="accent"><mat-icon>delete</mat-icon>Delete</button>
+        <span fxFlex></span> <!-- Empty span to push the search form to the right -->
+        <mat-form-field>
+          <mat-label>Search</mat-label>
+          <input matInput (keyup)="applyFilter($event)"  #input>
+        </mat-form-field>
+      </mat-card-actions>
+      
+    </mat-card>
+   <mat-card class="custom-card">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef style="width: 3%;">
+          <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()"
+                        [aria-label]="checkboxLabel()">
+          </mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row" style="width: 3%;">
+          <mat-checkbox (click)="$event.stopPropagation()"
+                        (change)="$event ? selection.toggle(row) : null"
+                        [checked]="selection.isSelected(row)"
+                        [aria-label]="checkboxLabel(row)">
+          </mat-checkbox>
+        </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef style="width: 17%;"> Name </th>
+        <td mat-cell *matCellDef="let element" style="width: 17%;"> {{element.name}} </td>
+      </ng-container>
+
+      <!-- Owner Column -->
+      <ng-container matColumnDef="owner">
+        <th mat-header-cell *matHeaderCellDef style="width: 10%;"> Owner </th>
+        <td mat-cell *matCellDef="let element" style="width: 10%;"> Umesh K K </td>
+      </ng-container>
+      
+      <!-- Description Column -->
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef style="width: 30%;"> Description </th>
+        <td mat-cell *matCellDef="let element" style="width: 30%;"> {{element.description}} </td>
+      </ng-container>
+      
+      <!-- Weight Column -->
+      <ng-container matColumnDef="weight">
+        <th mat-header-cell *matHeaderCellDef style="width: 20%;"> Percent Complete </th>
+        <td mat-cell *matCellDef="let element" style="width: 20%;"> {{element.symbol}} </td>
+      </ng-container>
+    
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="symbol">
+        <th mat-header-cell *matHeaderCellDef style="width: 20%;"> Planned Start Date </th>
+        <td mat-cell *matCellDef="let element" style="width: 20%;"> {{element.weight}} </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"></tr>
+    </table>
+  </mat-card>
+  </mat-drawer-content>
+</mat-drawer-container>

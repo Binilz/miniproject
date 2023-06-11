@@ -1,0 +1,52 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('https://signalinc.com/wp-content/uploads/2021/11/GTM_Playbook_2x-1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.custom-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 450px;
+  height: 450px;
+  background-color: rgb(217, 237, 249);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.custom-card mat-card-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.example-container mat-form-field + mat-form-field {
+  margin-left: 8px;
+}
+.login-title {
+  font-size: 34px; 
+}
+.form-field-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form-field {
+  flex: 1;
+  margin-right: 10px; /* Adjust the margin as desired */
+}
+.field {
+  width: 100%; /* Adjust the width as desired */
+ 
+}
+.button-field {
+  width: 90%; /* Adjust the width as desired */
+ 
+}
+  
